@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\dashboard;
 
-use App\Models\Equipo;
 use Illuminate\Http\Request;
+use App\Models\Caracteristica;
 use App\Http\Controllers\Controller;
 
-class EquipoController extends Controller
+class CaracteristicasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class EquipoController extends Controller
      */
     public function index()
     {
-        $equipos = Equipo::get();
+        $caracteristicas = Caracteristica::get();
    
-        return view('equipos.index',['equipos'=>$equipos]);
+        return view('caracteristicas.index',['caracteristicas'=>$caracteristicas]);
     }
 
     /**
@@ -27,7 +27,7 @@ class EquipoController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
