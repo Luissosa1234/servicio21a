@@ -40,7 +40,7 @@
     <div class="col-12 " rows="3">
       <label for="description" class="form-label">Descripción</label>
       <textarea class="form-control" id="description" rows="3" name="description"
-      value="{{old('description',$equipos->description)}}">Escribe una descripción del equipo</textarea>
+     >{{old('description',$equipos->description)}}</textarea>
     </div>
     
 </div>

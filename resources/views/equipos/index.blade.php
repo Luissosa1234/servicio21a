@@ -1,9 +1,12 @@
 @extends('Layouts.layout')
 
+
+
 @section('content')
-<div class="container p-3 rounded" style="background-color: white ">
- <h2>Lista de Equipos <a href="equipos/create"> <button type="button" style="width: 150px;" class="btn btn-outline-success float-right">Agregar equipo</button></a> </h2> 
-<table class="table table-dark table-hover">
+@include('layouts.session')
+<div class="container p-5 rounded" style="background-color: white ">
+ <h2>Lista de Equipos <a href="equipos/create"> <button type="button" style="width: 150px;" class="btn btn-success float-right">Agregar equipo</button></a> </h2> 
+<table class="table table-dark table-hover " style="font-size: 11px; margin-left: -80px">
     <thead>
   <tr>
     <th scope="col">id</th>
@@ -17,7 +20,7 @@
     <th scope="col">Status</th>
     <th scope="col">Ubicación</th>
     <th scope="col">Costo Uni.</th>
-    <th scope="col">Acciones</th>
+    <th scope="col" style="text-align: center">Acciones</th>
      </tr>
 </thead>
 <tbody>
@@ -25,7 +28,7 @@
   <tr>
     <th scope="row">{{$equipo->id}}</th>
     <td>{{$equipo->equipo}}</td>
-    <td>{{$equipo->modelo}} $</td>
+    <td>{{$equipo->modelo}}</td>
     <td>{{$equipo->marca}}</td>
     <td>{{$equipo->nserie}}</td>
     <td>{{$equipo->cudg}}</td>
@@ -39,35 +42,34 @@
     {{-- <td> {{ $equipo->updated_at->format('d-m-y')}}</td> --}}
 
 
-    <td class="row align-items-start p-1">
+    <td class="d-flex flex-row bd-highlight mb-3">
       
-     
-
-
       
-      <a href="#" >
-        <button class="btn btn-outline-secondary">
-          Ver
-        </button>
-      </a>
+        <a href="{{route('equipos.show',$equipo->id)}}" >
+          <button class="btn btn-secondary">
+            Ver
+          </button>
+        </a>
 
 
-
-      <a href="#}">
-        <button class="btn btn-outline-primary ml-2">
+      <a href="{{route('equipos.edit',$equipo->id)}}">
+        <button class="btn btn-primary ml-2">
           Actualizar
         </button>
         </a>
 
-        
-        <form action="#" method="post">
+        <form action="{{route('equipos.destroy', $equipo ->id)}}" method="post">
+
           @method('DELETE')
           @csrf
-          <button type="submit" class="btn btn-outline-danger ml-2">Eliminar</button>
+         
+          <button type="submit" class="btn btn-danger ml-2">Eliminar</button>
         </form>
-  
+     
 
+      
     </td>
+  
     </tr>
      @endforeach
      </tbody>

@@ -52,7 +52,9 @@ class EquipoController extends Controller
      */
     public function show($id)
     {
-        //
+        $equipos = Equipo::find($id);
+
+        return view('equipos.show',['equipos' => $equipos]);
     }
 
     /**
@@ -63,7 +65,8 @@ class EquipoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $equipos = Equipo::find($id);
+        return view('equipos.edit',['equipos' => $equipos]);
     }
 
     /**
@@ -73,9 +76,14 @@ class EquipoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreEquipoPost $request, $id)
     {
-        //
+        $equipos = Equipo::find($id);
+
+    
+        $equipos->update($request->validated());
+
+        return back()->with('status', 'CLIENTE ACTUALIZADO CON EXITO');
     }
 
     /**
@@ -86,6 +94,10 @@ class EquipoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $equipos = Equipo::find($id);
+
+        $equipos->delete();
+        
+        return back()->with('status', 'CLIENTE ELIMINADO CON EXITO');
     }
 }

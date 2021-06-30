@@ -32,7 +32,7 @@ class StoreEquipoPost extends FormRequest
             'description'=> 'required|min:10|max:500',
             'status'=> '',
             'ubicacion'=> 'required|min:5|max:50',
-            'cunitario'=> ''
+            'cunitario'=> 'required|numeric|between:0,99.99',
             
         ];
     }
