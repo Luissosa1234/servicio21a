@@ -14,6 +14,8 @@ class Caracteristica extends Model
     'hardware',
     'software',
     'description'];
+
+    
 }
 
 

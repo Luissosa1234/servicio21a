@@ -5,6 +5,7 @@ namespace App\Http\Controllers\dashboard;
 use App\Models\Ubicacion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUbicacionPost;
 
 class UbicacionController extends Controller
 {
@@ -27,7 +28,7 @@ class UbicacionController extends Controller
      */
     public function create()
     {
-        //
+        return view('ubicacion.crear',['ubicacion' => new Ubicacion()]);
     }
 
     /**
@@ -36,9 +37,11 @@ class UbicacionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUbicacionPost $request)
     {
-        //
+        Ubicacion::create($request->validated());
+
+        return back()->with('status', 'UBICACION REGISTRADA CON EXITO');
     }
 
     /**
@@ -49,7 +52,9 @@ class UbicacionController extends Controller
      */
     public function show($id)
     {
-        //
+        $ubicaciones = Ubicacion::find($id);
+
+        return view('ubicacion.show',['ubicaciones' => $ubicaciones]);
     }
 
     /**
@@ -60,7 +65,9 @@ class UbicacionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ubicaciones = Ubicacion::find($id);
+
+        return view('ubicacion.show',['ubicaciones' => $ubicaciones]);
     }
 
     /**
@@ -70,9 +77,14 @@ class UbicacionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUbicacionPost $request, $id)
     {
-        //
+        $ubicaciones = Ubicacion::find($id);
+
+    
+        $ubicaciones->update($request->validated());
+
+        return back()->with('status', 'UBICACION ACTUALIZADA CON EXITO');
     }
 
     /**
@@ -83,6 +95,10 @@ class UbicacionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ubicaciones = Ubicacion::find($id);
+
+        $ubicaciones->delete();
+        
+        return back()->with('status', 'UBICACION ACTUALIZADA CON EXITO');
     }
 }

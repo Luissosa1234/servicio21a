@@ -41,7 +41,7 @@ class EquipoController extends Controller
     {
         Equipo::create($request->validated());
 
-        return back()->with('status', 'EQUIPO REGISTRADA CON EXITO');
+        return back()->with('status', 'EQUIPO REGISTRADO CON EXITO');
     }
 
     /**

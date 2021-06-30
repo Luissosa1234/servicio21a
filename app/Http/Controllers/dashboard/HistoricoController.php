@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\dashboard;
 
+use App\Models\Equipo;
 use App\Models\Historico;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreHistoricoPost;
 
 class HistoricoController extends Controller
 {
@@ -27,7 +29,7 @@ class HistoricoController extends Controller
      */
     public function create()
     {
-        //
+        return view('historico.crear',['historicos' => new Historico()]);
     }
 
     /**
@@ -36,9 +38,11 @@ class HistoricoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreHistoricoPost $request)
     {
-        //
+        Historico::create($request->validated());
+
+        return back()->with('status', 'PRESTAMO REGISTRADO CON EXITO');
     }
 
     /**
@@ -49,7 +53,9 @@ class HistoricoController extends Controller
      */
     public function show($id)
     {
-        //
+        $historicos = Historico::find($id);
+
+        return view('historico.show',['historicos' => $historicos]);
     }
 
     /**
@@ -60,7 +66,9 @@ class HistoricoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $historicos = Historico::find($id);
+
+        return view('historico.edit',['historicos' => $historicos]);
     }
 
     /**
@@ -70,9 +78,14 @@ class HistoricoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreHistoricoPost $request, $id)
     {
-        //
+        $historicos = Historico::find($id);
+
+    
+        $historicos->update($request->validated());
+
+        return back()->with('status', 'PRESTAMO ACTUALIZADO CON EXITO');
     }
 
     /**
@@ -83,6 +96,11 @@ class HistoricoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $historicos = Historico::find($id);
+
+    
+        $historicos->delete();
+
+        return back()->with('status', 'PRESTAMO ELIMINADO CON EXITO');
     }
 }

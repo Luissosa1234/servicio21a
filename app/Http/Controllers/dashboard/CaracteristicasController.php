@@ -5,6 +5,7 @@ namespace App\Http\Controllers\dashboard;
 use Illuminate\Http\Request;
 use App\Models\Caracteristica;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCaracteristicaPost;
 
 class CaracteristicasController extends Controller
 {
@@ -27,7 +28,7 @@ class CaracteristicasController extends Controller
      */
     public function create()
     {
-        //
+        return view('caracteristicas.crear',['caracteristicas' => new Caracteristica()]);
     }
 
     /**
@@ -36,9 +37,11 @@ class CaracteristicasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCaracteristicaPost $request)
     {
-        //
+        Caracteristica::create($request->validated());
+
+        return back()->with('status', 'EQUIPO REGISTRADA CON EXITO');
     }
 
     /**
@@ -49,7 +52,9 @@ class CaracteristicasController extends Controller
      */
     public function show($id)
     {
-        //
+        $caracteristicas = Caracteristica::find($id);
+
+        return view('caracteristicas.show',['caracteristicas' => $caracteristicas]);
     }
 
     /**
@@ -60,7 +65,8 @@ class CaracteristicasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $caracteristicas = Caracteristica::find($id);
+        return view('caracteristicas.edit',['caracteristicas' => $caracteristicas]);
     }
 
     /**
@@ -70,9 +76,14 @@ class CaracteristicasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreCaracteristicaPost $request, $id)
     {
-        //
+        $caracteristicas = Caracteristica::find($id);
+
+    
+        $caracteristicas->update($request->validated());
+
+        return back()->with('status', 'CLIENTE ACTUALIZADO CON EXITO');
     }
 
     /**
@@ -83,6 +94,10 @@ class CaracteristicasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $caracteristicas = Caracteristica::find($id);
+
+        $caracteristicas->delete();
+        
+        return back()->with('status', 'CLIENTE ELIMINADO CON EXITO');
     }
 }

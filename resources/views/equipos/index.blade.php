@@ -4,7 +4,7 @@
 
 @section('content')
 @include('layouts.session')
-<div class="container p-5 rounded" style="background-color: white ">
+<div class="container p-1 rounded" style="background-color: white ">
  <h2>Lista de Equipos <a href="equipos/create"> <button type="button" style="width: 150px;" class="btn btn-success float-right">Agregar equipo</button></a> </h2> 
 <table class="table table-dark table-hover " style="font-size: 11px; margin-left: -80px">
     <thead>
