@@ -17,9 +17,9 @@ use App\Http\Controllers\dashboard\CaracteristicasController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/balance', function () {
+    return view('balance/index');
+});
 
 
 // Route::get('/equipos', function () {
