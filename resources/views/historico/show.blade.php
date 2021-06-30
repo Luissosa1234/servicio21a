@@ -33,7 +33,7 @@
 <div class="row">
     <div class="col-md-6">
       <label for="fentrega" class="form-label">Fecha Eetrega</label>
-      <input type="text" class="form-control" id="fentrega" placeholder="dell" name="fentrega" readonly
+      <input type="text" class="form-control" id="fentrega"  name="fentrega" readonly
       value="{{$historicos->fentrega}}">
     </div>
   </div>

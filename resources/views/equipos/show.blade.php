@@ -33,7 +33,7 @@
 <div class="row">
     <div class="col-md-6">
       <label for="marca" class="form-label">Marca</label>
-      <input type="text" class="form-control" id="marca" placeholder="dell" name="marca" readonly
+      <input type="text" class="form-control" id="marca"  name="marca" readonly
       value="{{$equipos->marca}}">
     </div>
     <div class="col-md-6">

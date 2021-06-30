@@ -11,22 +11,22 @@
     <div class="container-fluid text-center ">
       
        
-       <h1>ACTUALIZAR EQUIPO: {{ $equipos->equipo}}  </h1>
+       <h1>ACTUALIZAR UBICACIÓN: {{ $ubicaciones->equipo}}  </h1>
         @include('layouts.session')
     </div>
 
              {{-- vista para validar errores con el include --}}
              @include('layouts/error')
 
-             <form action="{{route("equipos.update",$equipos->id)}}" method="post">
+             <form action="{{route("ubicacion.update",$ubicaciones->id)}}" method="post">
                 @method('PUT')
             
-              @include('equipos._form')
+              @include('ubicacion._form2')
           
 
                
            </form>
-           <a href="{{route("equipos.index")}}">
+           <a href="{{route("ubicacion.index")}}">
             <button  class="btn btn-danger btn-lg justify-content-end mt-5" style="width: 150px">Regresar</button>
           </a>
      

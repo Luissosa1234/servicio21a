@@ -34,7 +34,7 @@
 <div class="row">
     <div class="col-md-6">
       <label for="software" class="form-label">Software</label>
-      <input type="text" class="form-control" id="software" placeholder="dell" name="software" readonly
+      <input type="text" class="form-control" id="software"  name="software" readonly
       value="{{$caracteristicas->software}}">
     </div>
 <div class="row" >

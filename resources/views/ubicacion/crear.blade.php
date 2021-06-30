@@ -6,8 +6,8 @@
 
 <div class="container ">
 
-    <div class="container-fluid text-center">
-        <h1>AGREGAR UBICACION</h1>
+    <div class="container-fluid p-3">
+        <h1>AGREGAR UBICACIÓN</h1>
         @include('layouts.session')
     </div>
 

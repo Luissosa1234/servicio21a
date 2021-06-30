@@ -18,7 +18,7 @@ class UbicacionController extends Controller
     {
         $ubicaciones = Ubicacion::get();
    
-        return view('ubicacion.index',['ubicaciones'=>$ubicaciones]);
+        return view('ubicacion.index',['ubicacion'=>$ubicaciones]);
     }
 
     /**
@@ -67,7 +67,7 @@ class UbicacionController extends Controller
     {
         $ubicaciones = Ubicacion::find($id);
 
-        return view('ubicacion.show',['ubicaciones' => $ubicaciones]);
+        return view('ubicacion.edit',['ubicaciones' => $ubicaciones]);
     }
 
     /**
@@ -99,6 +99,6 @@ class UbicacionController extends Controller
 
         $ubicaciones->delete();
         
-        return back()->with('status', 'UBICACION ACTUALIZADA CON EXITO');
+        return back()->with('status', 'UBICACION ELIMINADA CON EXITO');
     }
 }

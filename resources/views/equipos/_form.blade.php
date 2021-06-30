@@ -15,7 +15,7 @@
 <div class="row">
     <div class="col-md-6">
       <label for="marca" class="form-label">Marca</label>
-      <input type="text" class="form-control" id="marca" placeholder="dell" name="marca"
+      <input type="text" class="form-control" id="marca"  name="marca"
       value="{{old('marca',$equipos->marca)}}">
     </div>
     <div class="col-md-6">
