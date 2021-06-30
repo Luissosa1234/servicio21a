@@ -9,12 +9,13 @@ class Equipo extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['equipo',
+    protected $fillable = [
+    'equipo',
     'modelo',
     'marca',
     'nserie',
     'cudg',
-    'descripcion',
+    'description',
     'status',
     'ubicacion',
     'cunitario'];

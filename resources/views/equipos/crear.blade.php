@@ -1,39 +1,26 @@
 @extends('Layouts.layout')
 
+
+
 @section('content')
 
-{{-- vista para validar errores con el include --}}
-{{-- @include('dashboard/partials.validation-error') --}}
+<div class="container ">
 
-<form action="#" method="post">
-    @csrf
-
-    <div class="form-group">
-        <label for="title">Titulo</label>
-        <input class="form-control" type="text" name="title" id="title">
-
-        @error('title')
-        <small class="text-danger">{{ $message }}</small>    
-        @enderror
-
-
-    </div>
-    <div class="form-group">
-        <label for="url_clean">Url limpia</label>
-        <input class="form-control" type="text" name="url_clean" id="url_clean">
+    <div class="container-fluid text-center">
+        <h1>AGREGAR EQUIPO</h1>
+        @include('layouts.session')
     </div>
 
-    
-    <div class="form-group">
-        <label for="content" class="form-label">Contenido</label>
-        <textarea class="form-control" id="content" rows="3" name="content"></textarea>
-    </div>
+             {{-- vista para validar errores con el include --}}
+             @include('Layouts/error')
 
+          <form action="{{route("equipos.store")}}" method="post">
+         @include('equipos._form')
+           </form>
 
+           <a href="{{route("equipos.index")}}">
+            <button  class="btn btn-danger btn-lg justify-content-end mt-5" style="width: 150px">Regresar</button>
+          </a>
 
-    <input type="submit" value="Enviar">
-</form>
-
-
+</div>
 @endsection
-
